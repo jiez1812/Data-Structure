@@ -52,6 +52,18 @@ class TreeNode:
             res.append(root.data)
         return res
 
+    def findvalue(self, num):
+        if num < self.data:
+            if not self.left:
+                return "{0} is not found.".format(num)
+            return self.left.findvalue(num)
+        elif num > self.data:
+            if not self.right:
+                return "{0} is not found.".format(num)
+            return self.right.findvalue(num)
+        else:
+            return "{0} is found".format(num)
+
 tree = TreeNode(52)
 tree.insert(24)
 tree.insert(75)
@@ -64,3 +76,6 @@ tree.insert(79)
 print(tree.inorderTraversal(tree))
 print(tree.preorderTraversal(tree))
 print(tree.postorderTraversal(tree))
+
+print(tree.findvalue(75))
+print(tree.findvalue(22))
